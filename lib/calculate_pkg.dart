@@ -1,5 +1,6 @@
 library calculate_pkg;
 import 'package:flutter/material.dart';
+import 'package:flutter_exit_app/flutter_exit_app.dart';
 import '';
 /// A Calculator.
 class CalculateWidget extends StatefulWidget {
@@ -31,12 +32,12 @@ class _CalculateWidgetState extends State<CalculateWidget> {
             Expanded(
               flex: 1,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
                     margin: const EdgeInsets.only(right: 20),
                     child: Text(
-                      widget.information.number,
+                      widget.information.number.toString(),
                       style: const TextStyle(
                         fontSize: 35,
                         color: Colors.white,
@@ -44,6 +45,9 @@ class _CalculateWidgetState extends State<CalculateWidget> {
                       overflow: TextOverflow.fade,
                     ),
                   ),
+                  TextButton(onPressed: (){
+                    FlutterExitApp.exitApp();
+                  }, child: Text('Exit App',style: TextStyle(color: Colors.white,fontSize: 20),))
                 ],
               ),
             ),
