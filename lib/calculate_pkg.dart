@@ -582,15 +582,15 @@ class _CalculateWidgetState extends State<CalculateWidget> {
                   }
                 },
                 child: Container(
-                  height: 50,
-                  width: 70,
+                  height: 40,
+                  width: 60,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     border: Border.all(
                       color: Colors.amber,
                     )
                   ),
-                  child: const Center(child: Text('Navigate Back',style: TextStyle(color: Colors.white,fontSize: 12,fontWeight: FontWeight.bold),)),
+                  child: const Center(child: Text('Back',textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontSize: 12,fontWeight: FontWeight.bold),)),
 
                 ),
               ),
