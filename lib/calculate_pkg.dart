@@ -6,7 +6,7 @@ import '';
 /// A Calculator.
 class Calculate extends StatelessWidget {
   final Information information;
-  const Calculate({Key? key,required this.information}) : super(key: key);
+  const Calculate({Key? key,required this.information}) :super(key: key);
 
   @override
   Widget build(BuildContext context) {
