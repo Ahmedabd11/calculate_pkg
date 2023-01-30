@@ -1,3 +1,4 @@
+// @dart=2.9
 library calculate_pkg;
 import 'package:calculate_pkg/users_list/view_model/user_view_model.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,7 @@ import '';
 /// A Calculator.
 class Calculate extends StatelessWidget {
   final Information information;
-  const Calculate({Key? key,required this.information}) :super(key: key);
+  const Calculate({Key key, this.information}) :super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class Calculate extends StatelessWidget {
 
 class CalculateWidget extends StatefulWidget {
   final Information information;
-  const CalculateWidget({Key? key,required this.information}) : super(key: key);
+  const CalculateWidget({Key key, this.information}) : super(key: key);
 
   @override
   State<CalculateWidget> createState() => _CalculateWidgetState();
@@ -28,7 +29,7 @@ class CalculateWidget extends StatefulWidget {
 class Information{
   String name;
   String number;
-  Information({required this.name,required this.number});
+  Information({this.name, this.number});
 }
 
 class _CalculateWidgetState extends State<CalculateWidget> {
