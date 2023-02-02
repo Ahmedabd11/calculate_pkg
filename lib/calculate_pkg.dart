@@ -659,7 +659,7 @@ class _CalculateWidgetState extends State<CalculateWidget> {
                 onTap: (){
                   widget.balanceCallBack.call((value){
                     setState(() {
-                      superText = value;
+                      superText = value.getMsisdn();
                     });
                     print('hello from mini app$value');
                   });
