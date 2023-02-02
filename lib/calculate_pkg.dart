@@ -1,26 +1,31 @@
 // @dart=2.9
 library calculate_pkg;
-import 'package:calculate_pkg/users_list/view_model/user_view_model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '';
+import 'App/users_list/view_model/user_view_model.dart';
 /// A Calculator.
+// typedef ResponseCallBack=void Function(String balence);
+// typedef TapCallBack= Future<String> Function(ResponseCallBack balence);
 class Calculate extends StatelessWidget {
+  final Function balanceCallBack;
   final Information information;
-  const Calculate({Key key, this.information}) :super(key: key);
+  const Calculate({Key key, this.information,this.balanceCallBack}) :super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [ChangeNotifierProvider(create: (_)=> UserViewModel())],
-      child: CalculateWidget(information: information,),
+      child: CalculateWidget(information: information,balanceCallBack: balanceCallBack,),
     );
   }
 }
 
 class CalculateWidget extends StatefulWidget {
+  final Function balanceCallBack;
   final Information information;
-  const CalculateWidget({Key key, this.information}) : super(key: key);
+  const CalculateWidget({Key key, this.information,this.balanceCallBack}) : super(key: key);
 
   @override
   State<CalculateWidget> createState() => _CalculateWidgetState();
@@ -34,6 +39,7 @@ class Information{
 
 class _CalculateWidgetState extends State<CalculateWidget> {
   String enteredText = '';
+  String superText='';
   String operator = '';
   double result = 0;
   int i = 1;
@@ -68,6 +74,17 @@ class _CalculateWidgetState extends State<CalculateWidget> {
                 margin: const EdgeInsets.only(right: 20),
                 child: Text(
                   widget.information.number.toString(),
+                  style: const TextStyle(
+                    fontSize: 35,
+                    color: Colors.white,
+                  ),
+                  overflow: TextOverflow.fade,
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(right: 20),
+                child: Text(
+                  superText,
                   style: const TextStyle(
                     fontSize: 35,
                     color: Colors.white,
@@ -635,6 +652,29 @@ class _CalculateWidgetState extends State<CalculateWidget> {
                       )
                   ),
                   child: const Center(child: Text('Back',textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontSize: 12,fontWeight: FontWeight.bold),)),
+
+                ),
+              ),
+              GestureDetector(
+                onTap: (){
+                  widget.balanceCallBack.call((value){
+                    setState(() {
+                      superText = value;
+                    });
+                    print('hello from mini app$value');
+                  });
+                  // userViewModel.getUser();
+                },
+                child: Container(
+                  height: 50,
+                  width: 80,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      border: Border.all(
+                        color: Colors.amber,
+                      )
+                  ),
+                  child: const Center(child: Text('Super Call',textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontSize: 12,fontWeight: FontWeight.bold),)),
 
                 ),
               ),

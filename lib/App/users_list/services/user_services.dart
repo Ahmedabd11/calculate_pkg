@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
-import '../../utils/constants.dart';
+import '../../../Constants/utils/constants.dart';
 import '../model/user_list_model.dart';
 import 'api_status.dart';
 class UserServices{
