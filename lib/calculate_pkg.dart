@@ -661,21 +661,7 @@ class _CalculateWidgetState extends State<CalculateWidget> {
                     setState(() {
                       superText = value.getMsisdn();
                     });
-                    if(superText=='you dont have Permission')
-                    {
-                      showDialog(context: context, builder: (BuildContext context){
-                        return  AlertDialog(
-                          title: const Text("Fail"),
-                          titleTextStyle: const TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 20),
-                          backgroundColor: Colors.grey.shade50,
-                          shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(20))
-                          ),
-                          content: Text("Currently $superText"),
-                        );
-                      });
-                    }
-                    print('hello from mini app$value');
+                    print('mini app$value');
                   });
                   // userViewModel.getUser();
                 },
