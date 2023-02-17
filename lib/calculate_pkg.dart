@@ -657,9 +657,10 @@ class _CalculateWidgetState extends State<CalculateWidget> {
               ),
               GestureDetector(
                 onTap: (){
-                  widget.balanceCallBack.call((value){
+                  widget.balanceCallBack.call((value)async{
+                    var val=await value.getMsisdn();
                     setState(() {
-                      superText = value.getMsisdn();
+                      superText = val;
                     });
                     print('mini app$value');
                   });
