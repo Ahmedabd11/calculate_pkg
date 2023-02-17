@@ -1,4 +1,4 @@
-abstract class Config{
+abstract class MicroAppConfiguration{
   String Msidn='';
   String name='';
   String code='';
