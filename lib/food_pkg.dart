@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '';
 import 'App/users_list/view_model/user_view_model.dart';
-/// A Calculator.
+/// A Food App.
 // typedef ResponseCallBack=void Function(String balence);
 // typedef TapCallBack= Future<String> Function(ResponseCallBack balence);
 class Food extends StatelessWidget {
