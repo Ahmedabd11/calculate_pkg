@@ -208,7 +208,7 @@ class _FoodState extends State<Food> {
                                     height: 23,
                                   ),
                                   Text('${widget.information[index].name}',
-                                      style:GoogleFonts.poppins(textStyle: TextStyle(color:  index==0?Colors.white:Colors.black,fontWeight: FontWeight.bold,fontSize: 16))),
+                                      style:GoogleFonts.poppins(textStyle: TextStyle(color:  index==selectedIndex?Colors.white:Colors.black,fontWeight: FontWeight.bold,fontSize: 16))),
                                   const SizedBox(
                                     height: 13,
                                   ),
@@ -217,7 +217,7 @@ class _FoodState extends State<Food> {
                                       const Icon(Icons.star,color: Color(0xff00B8D9),size: 15,),
                                       const SizedBox(width: 10,),
                                       Text('${widget.information[index].rating} - 20 mins',
-                                          style:GoogleFonts.poppins(textStyle: TextStyle(color: index==0?Colors.white:Colors.black,fontWeight: FontWeight.bold,fontSize: 10))),
+                                          style:GoogleFonts.poppins(textStyle: TextStyle(color: index==selectedIndex?Colors.white:Colors.black,fontWeight: FontWeight.bold,fontSize: 10))),
                                     ],
                                   )
 
