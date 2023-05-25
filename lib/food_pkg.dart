@@ -1,8 +1,9 @@
-// @dart=2.9
+
 library food_pkg;
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 
 /// A Food App.
 // typedef ResponseCallBack=void Function(String balence);
@@ -10,19 +11,19 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 class MenuFood{
-  String name;
-  String image;
+  String? name;
+  String? image;
   MenuFood({this.name, this.image});
 }
 
 class Information{
-  String name;
-  String rating;
+  String? name;
+  String? rating;
   Information({this.name, this.rating});
 }
 class Food extends StatelessWidget {
   final List<Information> information;
-  Food({Key key, this.information}) :super(key: key);
+  Food({Key? key, required this.information}) :super(key: key);
   TextEditingController searchController = TextEditingController();
   final List<MenuFood> menuData = [
     MenuFood(name: 'Burger', image: "assets/test/burg.png"),
