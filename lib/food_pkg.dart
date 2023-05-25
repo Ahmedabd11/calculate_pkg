@@ -17,11 +17,11 @@ class MenuFood{
 
 class Information{
   String name;
-  String number;
-  Information({this.name, this.number});
+  String rating;
+  Information({this.name, this.rating});
 }
 class Food extends StatelessWidget {
-  final Information information;
+  final List<Information> information;
   Food({Key key, this.information}) :super(key: key);
   TextEditingController emailController = TextEditingController();
   final List<MenuFood> menuData = [
@@ -31,8 +31,8 @@ class Food extends StatelessWidget {
     MenuFood(name: 'Roll', image: "assets/test/roll.png"),
   ];
   final List<MenuFood> data = [
-    MenuFood(name: 'Beef Burger', image: "assets/test/burger.png"),
-    MenuFood(name: 'American Burger', image: "assets/test/burger.png"),
+    MenuFood(image: "assets/test/burger.png"),
+    MenuFood(image: "assets/test/burger.png"),
   ];
   int i = 1;
   @override
@@ -189,7 +189,7 @@ class Food extends StatelessWidget {
                               const SizedBox(
                                 height: 23,
                               ),
-                              Text(data[index].name??'',
+                              Text('${information[index].rating}??''',
                                   style:GoogleFonts.poppins(textStyle: TextStyle(color:  index==0?Colors.white:Colors.black,fontWeight: FontWeight.bold,fontSize: 16))),
                               const SizedBox(
                                 height: 13,
@@ -198,7 +198,7 @@ class Food extends StatelessWidget {
                                 children:  [
                                   const Icon(Icons.star,color: Color(0xff00B8D9),size: 15,),
                                   const SizedBox(width: 10,),
-                                  Text('4.9 - 20 mins',
+                                  Text('${information[index].rating} - 20 mins',
                                       style:GoogleFonts.poppins(textStyle: TextStyle(color: index==0?Colors.white:Colors.black,fontWeight: FontWeight.bold,fontSize: 10))),
                                 ],
                               )
