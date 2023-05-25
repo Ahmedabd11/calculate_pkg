@@ -53,7 +53,7 @@ class Food extends StatelessWidget {
                 const SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Image.asset('assets/images/menu.png'),
+                  child: Image.asset('assets/images/menu.png',package: 'calculate_pkg',),
                 ),
                 const SizedBox(height: 40),
                 Row(
@@ -191,7 +191,7 @@ class Food extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Center(child: Image.asset(data[index].image??"")),
+                                Center(child: Image.asset(data[index].image??"",package: 'CalculatorMicroApp',)),
                                 const SizedBox(
                                   height: 23,
                                 ),
