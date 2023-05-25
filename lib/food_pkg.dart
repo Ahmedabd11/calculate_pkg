@@ -26,14 +26,14 @@ class Food extends StatelessWidget {
   Food({Key? key, required this.information}) :super(key: key);
   TextEditingController searchController = TextEditingController();
   final List<MenuFood> menuData = [
-    MenuFood(name: 'Burger', image: "assets/burg.png"),
-    MenuFood(name: 'Pizza', image: "assets/pizza.png"),
-    MenuFood(name: 'Soup', image: "assets/soup.png"),
-    MenuFood(name: 'Roll', image: "assets/roll.png"),
+    MenuFood(name: 'Burger', image: "assets/images/burg.png"),
+    MenuFood(name: 'Pizza', image: "assets/images/pizza.png"),
+    MenuFood(name: 'Soup', image: "assets/images/soup.png"),
+    MenuFood(name: 'Roll', image: "assets/images/roll.png"),
   ];
   final List<MenuFood> data = [
-    MenuFood(image: "assets/test/burger.png"),
-    MenuFood(image: "assets/test/burger.png"),
+    MenuFood(image: "assets/images/burger.png"),
+    MenuFood(image: "assets/images/burger.png"),
   ];
   int i = 1;
   @override
@@ -53,7 +53,7 @@ class Food extends StatelessWidget {
                 const SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Image.asset('assets/menu.png'),
+                  child: Image.asset('assets/images/menu.png'),
                 ),
                 const SizedBox(height: 40),
                 Row(
