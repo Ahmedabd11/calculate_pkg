@@ -26,10 +26,10 @@ class Food extends StatelessWidget {
   Food({Key? key, required this.information}) :super(key: key);
   TextEditingController searchController = TextEditingController();
   final List<MenuFood> menuData = [
-    MenuFood(name: 'Burger', image: "assets/test/burg.png"),
-    MenuFood(name: 'Pizza', image: "assets/test/pizza.png"),
-    MenuFood(name: 'Soup', image: "assets/test/soup.png"),
-    MenuFood(name: 'Roll', image: "assets/test/roll.png"),
+    MenuFood(name: 'Burger', image: "assets/burg.png"),
+    MenuFood(name: 'Pizza', image: "assets/pizza.png"),
+    MenuFood(name: 'Soup', image: "assets/soup.png"),
+    MenuFood(name: 'Roll', image: "assets/roll.png"),
   ];
   final List<MenuFood> data = [
     MenuFood(image: "assets/test/burger.png"),
@@ -53,7 +53,7 @@ class Food extends StatelessWidget {
                 const SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Image.asset('assets/test/menu.png'),
+                  child: Image.asset('assets/menu.png'),
                 ),
                 const SizedBox(height: 40),
                 Row(
@@ -195,7 +195,7 @@ class Food extends StatelessWidget {
                                 const SizedBox(
                                   height: 23,
                                 ),
-                                Text('${information[index].rating}??''',
+                                Text('${information[index].name}',
                                     style:GoogleFonts.poppins(textStyle: TextStyle(color:  index==0?Colors.white:Colors.black,fontWeight: FontWeight.bold,fontSize: 16))),
                                 const SizedBox(
                                   height: 13,
