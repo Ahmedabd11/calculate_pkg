@@ -44,7 +44,7 @@ class Food extends StatelessWidget {
         return false;
       },
       child: Scaffold(
-        resizeToAvoidBottomInset: true,
+        resizeToAvoidBottomInset: false,
         backgroundColor: const Color(0xffFDF8FF),
         body: SafeArea(
             child: Column(
