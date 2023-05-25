@@ -128,7 +128,7 @@ class Food extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Center(child: Image.asset(menuData[index].image??"")),
+                                Center(child: Image.asset(menuData[index].image??"",package: 'calculate_pkg')),
                                 const SizedBox(
                                   height: 13,
                                 ),
@@ -191,7 +191,7 @@ class Food extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Center(child: Image.asset(data[index].image??"",package: 'CalculatorMicroApp',)),
+                                Center(child: Image.asset(data[index].image??"",package: 'calculate_pkg')),
                                 const SizedBox(
                                   height: 23,
                                 ),
