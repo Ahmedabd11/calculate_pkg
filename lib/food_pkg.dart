@@ -21,9 +21,15 @@ class Information{
   String? rating;
   Information({this.name, this.rating});
 }
-class Food extends StatelessWidget {
+class Food extends StatefulWidget {
   final List<Information> information;
-  Food({Key? key, required this.information}) :super(key: key);
+  const Food({Key? key,required this.information}) : super(key: key);
+
+  @override
+  State<Food> createState() => _FoodState();
+}
+
+class _FoodState extends State<Food> {
   TextEditingController searchController = TextEditingController();
   final List<MenuFood> menuData = [
     MenuFood(name: 'Burger', image: "assets/images/burg.png"),
@@ -35,12 +41,12 @@ class Food extends StatelessWidget {
     MenuFood(image: "assets/images/burger.png"),
     MenuFood(image: "assets/images/burger.png"),
   ];
-  int i = 1;
+  int selectedIndex = -1;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: ()async{
-        Navigator.pop(context,searchController.text);
+        Navigator.pop(context,widget.information[selectedIndex].name);
         return false;
       },
       child: Scaffold(
@@ -177,39 +183,46 @@ class Food extends StatelessWidget {
                         itemCount: data.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
-                          return Container(
-                            width: 200,
-                            height: 290,
-                            padding: const EdgeInsets.all(16),
-                            margin:const EdgeInsets.only(right: 20) ,
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: const Color(0xffDBDBDB)
-                                ),
-                                color: index==0?const Color(0xff690090):Colors.white,
-                                borderRadius: BorderRadius.circular(12)),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Center(child: Image.asset(data[index].image??"",package: 'calculate_pkg')),
-                                const SizedBox(
-                                  height: 23,
-                                ),
-                                Text('${information[index].name}',
-                                    style:GoogleFonts.poppins(textStyle: TextStyle(color:  index==0?Colors.white:Colors.black,fontWeight: FontWeight.bold,fontSize: 16))),
-                                const SizedBox(
-                                  height: 13,
-                                ),
-                                Row(
-                                  children:  [
-                                    const Icon(Icons.star,color: Color(0xff00B8D9),size: 15,),
-                                    const SizedBox(width: 10,),
-                                    Text('${information[index].rating} - 20 mins',
-                                        style:GoogleFonts.poppins(textStyle: TextStyle(color: index==0?Colors.white:Colors.black,fontWeight: FontWeight.bold,fontSize: 10))),
-                                  ],
-                                )
+                          return GestureDetector(
+                            onTap: (){
+                              setState(() {
+                                selectedIndex=index;
+                              });
+                            },
+                            child: Container(
+                              width: 200,
+                              height: 290,
+                              padding: const EdgeInsets.all(16),
+                              margin:const EdgeInsets.only(right: 20) ,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: const Color(0xffDBDBDB)
+                                  ),
+                                  color: index==selectedIndex?const Color(0xff690090):Colors.white,
+                                  borderRadius: BorderRadius.circular(12)),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Center(child: Image.asset(data[index].image??"",package: 'calculate_pkg')),
+                                  const SizedBox(
+                                    height: 23,
+                                  ),
+                                  Text('${widget.information[index].name}',
+                                      style:GoogleFonts.poppins(textStyle: TextStyle(color:  index==0?Colors.white:Colors.black,fontWeight: FontWeight.bold,fontSize: 16))),
+                                  const SizedBox(
+                                    height: 13,
+                                  ),
+                                  Row(
+                                    children:  [
+                                      const Icon(Icons.star,color: Color(0xff00B8D9),size: 15,),
+                                      const SizedBox(width: 10,),
+                                      Text('${widget.information[index].rating} - 20 mins',
+                                          style:GoogleFonts.poppins(textStyle: TextStyle(color: index==0?Colors.white:Colors.black,fontWeight: FontWeight.bold,fontSize: 10))),
+                                    ],
+                                  )
 
-                              ],
+                                ],
+                              ),
                             ),
                           );
                         }),
@@ -221,6 +234,7 @@ class Food extends StatelessWidget {
     );
   }
 }
+
 
 
 
