@@ -23,7 +23,8 @@ class Information{
 }
 class Food extends StatefulWidget {
   final List<Information> information;
-  const Food({Key? key,required this.information}) : super(key: key);
+  final Function balanceCallBack;
+  const Food({Key? key,required this.information,required this.balanceCallBack}) : super(key: key);
 
   @override
   State<Food> createState() => _FoodState();
@@ -42,6 +43,7 @@ class _FoodState extends State<Food> {
     MenuFood(image: "assets/images/burger.png"),
   ];
   int selectedIndex = -1;
+  bool clickAble=false;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -127,48 +129,62 @@ class _FoodState extends State<Food> {
                         itemCount: menuData.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
-                          return Container(
-                            height: 50,
-                            width: MediaQuery.of(context).size.width/4,
-                            padding: const EdgeInsets.all(16),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Center(child: Image.asset(menuData[index].image??"",package: 'calculate_pkg')),
-                                const SizedBox(
-                                  height: 13,
-                                ),
-                                Center(
-                                  child: Text(
-                                    menuData[index].name??'',
-                                    style:GoogleFonts.poppins(textStyle: const TextStyle(
-                                      color: Colors.black,
-                                    )),
+                          return GestureDetector(
+                            onTap: (){
+                              if(index==0)
+                                {
+                                  widget.balanceCallBack.call((value)async{
+                                    var val=await value.getAmericanBurger();
+                                    setState(() {
+                                      clickAble = val;
+                                    });
+                                    print('mini app$value');
+                                  });
+                                }
+                            },
+                            child: Container(
+                              height: 50,
+                              width: MediaQuery.of(context).size.width/4,
+                              padding: const EdgeInsets.all(16),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Center(child: Image.asset(menuData[index].image??"",package: 'calculate_pkg')),
+                                  const SizedBox(
+                                    height: 13,
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Center(
-                                  child: Text(
-                                    '|',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      color: index==0?const Color(0xff00B8D9):Colors.black,
-                                    ),),
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Center(
-                                  child: Text(
-                                      '15',
+                                  Center(
+                                    child: Text(
+                                      menuData[index].name??'',
                                       style:GoogleFonts.poppins(textStyle: const TextStyle(
-                                        fontSize: 15,
                                         color: Colors.black,
-                                      ),)),
-                                ),
-                              ],
+                                      )),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  Center(
+                                    child: Text(
+                                      '|',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        color: index==0?const Color(0xff00B8D9):Colors.black,
+                                      ),),
+                                  ),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  Center(
+                                    child: Text(
+                                        '15',
+                                        style:GoogleFonts.poppins(textStyle: const TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.black,
+                                        ),)),
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         })),
@@ -185,9 +201,21 @@ class _FoodState extends State<Food> {
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: (){
-                              setState(() {
-                                selectedIndex=index;
-                              });
+                              if(index==1)
+                                {
+                                  if(clickAble)
+                                    {
+                                      setState(() {
+                                        selectedIndex=index;
+                                      });
+                                    }
+                                }
+                              else{
+                                setState(() {
+                                  selectedIndex=index;
+                                });
+                              }
+
                             },
                             child: Container(
                               width: 200,

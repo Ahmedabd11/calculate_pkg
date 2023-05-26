@@ -1,6 +1,6 @@
 abstract class MicroAppConfiguration{
-  String americanBurger='';
-  String beefBurger='';
+  bool americanBurger=false;
+  bool beefBurger=false;
 
   getBeefBurger(){
   }
