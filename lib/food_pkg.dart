@@ -78,7 +78,7 @@ class _FoodState extends State<Food> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children:  [
                     Text(
-                      'Favorite Food',
+                      'Favorite Foods',
                       style: GoogleFonts.poppins(textStyle: const TextStyle(color: Colors.black, fontSize: 36,fontWeight: FontWeight.bold),),
 
                     ),
@@ -95,7 +95,7 @@ class _FoodState extends State<Food> {
                             color: const Color(0xffDBDBDB)
                         ),
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(20)),
+                        borderRadius: BorderRadius.circular(35)),
                     child: TextField(
                       keyboardType: TextInputType.emailAddress,
                       cursorColor: Colors.black,
