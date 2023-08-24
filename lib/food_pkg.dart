@@ -48,11 +48,14 @@ class _FoodState extends State<Food> {
   @override
   void initState() {
     // TODO: implement initState
-    widget.balanceCallBack.call((value)async{
-      var val=await value.getAmericanBurger();
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      widget.balanceCallBack.call((value)async{
+        var val=await value.getAmericanBurger();
         clickAble = val;
-      print('mini app$value');
+        print('mini app$value');
+      });
     });
+
     super.initState();
   }
 
