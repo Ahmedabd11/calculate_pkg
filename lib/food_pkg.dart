@@ -44,6 +44,18 @@ class _FoodState extends State<Food> {
   ];
   int selectedIndex = -1;
   bool clickAble=false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    widget.balanceCallBack.call((value)async{
+      var val=await value.getAmericanBurger();
+        clickAble = val;
+      print('mini app$value');
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -133,13 +145,13 @@ class _FoodState extends State<Food> {
                             onTap: (){
                               if(index==0)
                                 {
-                                  widget.balanceCallBack.call((value)async{
-                                    var val=await value.getAmericanBurger();
-                                    setState(() {
-                                      clickAble = val;
-                                    });
-                                    print('mini app$value');
-                                  });
+                                  // widget.balanceCallBack.call((value)async{
+                                  //   var val=await value.getAmericanBurger();
+                                  //   setState(() {
+                                  //     clickAble = val;
+                                  //   });
+                                  //   print('mini app$value');
+                                  // });
                                 }
                             },
                             child: Container(
